@@ -64,7 +64,7 @@ public class VideoController {
 		// @ToDo
 		// Rewrite this line to find the video if it exists on the
 		// server and assign it to the video variable.
-		Video v = getVideo(id);
+		Video v = null;
 
 		if(v != null){
 			response.setContentType(v.getContentType());
@@ -88,7 +88,7 @@ public class VideoController {
 		// @ToDo
 		// Rewrite this line to find the video if it exists on the
 		// server and assign it to the video variable.
-		Video video = getVideo(id);
+		Video video = null;
 
 		VideoStatus status = null;
 
@@ -122,27 +122,4 @@ public class VideoController {
 	 * 
 	 */
 
-	private Map<Long,Video> videos = new HashMap<>();
-	private AtomicLong currentId = new AtomicLong(1);
-
-	@PostMapping(VIDEO_SVC_PATH)
-	public Video addVideo(@RequestBody Video v){
-		if(v.getId() == 0){
-			v.setId(currentId.incrementAndGet());
-		}
-
-		videos.put(v.getId(), v);
-
-		return v;
-	}
-
-	@GetMapping(INDIVIDUAL_VIDEO_PATH)
-	public Video getVideo(@PathVariable(ID_PARAMETER) long id){
-		return videos.get(id);
-	}
-
-	@GetMapping(VIDEO_SVC_PATH)
-	public Collection<Video> getVideos(){
-		return videos.values();
-	}
 }
