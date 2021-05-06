@@ -117,36 +117,21 @@ GET /video/{id}/data
  responsible for it and will be graded on whether or not it passes. __Make sure and read
  the AutoGradingTest code and look at each test__!
  
- You should not modify any of the code in Video, VideoStatus, VideoSvcApi, AutoGrading,
+ You should not modify any of the code in Video, VideoStatus,
  or AutoGradingTest. 
 
 ## Testing Your Implementation
 
-To test your solution, first run the application as described above. Once your application
-is running, you can right-click on the AutoGradingTest->Run As->JUnit Test to launch the
-test. Eclipse will report which tests pass or fail.
+To test your solution, run the AutoGradingTest. In addition, each time you push your code to GitHub,
+a GitHub Action will run and execute this test. The results of running this test will be available
+in GitHub. The primary measure for grading will be passing all of the tests.
 
-To get an estimated score for your solution, right-click on AutoGrading (not AutoGradingTest) and
-Run As->Java Application. The AutoGrading application will run AutoGradingTest and then print a
-summary of the test results and your score to the Eclipse Console (Window->Show View->Console). 
-The AutoGrading application will also create a submission package that you will submit as the
-solution to the assignment in Coursera.
 
 ## Submitting Your Assignment
 
-To submit your assignment, you must first run the AutoGrading application as described in the previous
-step to create your submission package. Make sure that you take note of the name of the submission
-package that is printed in the console to ensure that you submit the correct file. You should
-submit the submission package that is generated as the solution file on Coursera's website. 
-
-After submitting  your solution to Coursera, your submission package will be sent to the auto-grading
-servers. It may take a few minutes for a score to be assigned to your submission. Once the submission
-is graded, a detailed score will be registered with Coursera.
-
-Note: locally running the AutoGrading application DOES NOT submit your solution to Coursera and will
-not be counted as a valid submission. The grade that you see when running the AutoGrading application
-is an estimate of your grade only. You must correctly submit the solution to Coursera to receive an
-official grade.
+To submit your assignment, you must push your final version to the main branch of your repository in 
+GitHub prior to the assignment deadline. In addition, you should follow any other instructions in 
+Brightspace.
 
  
 ## Provided Code
@@ -194,9 +179,8 @@ official grade.
  
 ## Hints
 
-- The examples in GitHub will be helpful on this assignment
-- A valid solution is going to have at least one class annotated with @Controller
-- There will probably need to be at least 4 different methods annotated with @RequestMapping to
+- A valid solution is going to have at least one class annotated with @RestController or @Controller
+- There will probably need to be at least 4 different methods annotated with @RequestMapping (or @GetMapping, @PostMapping, etc.) to
   implement the HTTP API described
 - Any Controller method can take an HttpServletRequest or HttpServletResponse as parameters to 
   gain low-level access/control over the HTTP messages. Spring will automatically fill in these
@@ -223,36 +207,10 @@ official grade.
 - One of the Controller methods that is annotated with @RequestMapping is probably going to need 
   to take an HttpServletResponse object as a parameter and use this object to write out binary data 
   that should be sent to the client. 
-- There are multiple ways to implement most pieces of the application. Any solution that passes
-  the tests will be given full credit.
-- None of your Controllers or other classes should "implement VideoSvcApi" -- which is an interface
-  that is only used to create a Retrofit client. None of your classes should look like this:
-```java
-        public class SomeClass implements VideoSvcApi // Don't implement this interface! 
-        {
-          ...
-        }
-```        
-- You can use a method like the following to figure out the address of your server and generate a 
-  data url for a video:
-```java
-        private String getDataUrl(long videoId){
-            String url = getUrlBaseForLocalServer() + "/video/" + videoId + "/data";
-            return url;
-        }
-
-     	private String getUrlBaseForLocalServer() {
-		   HttpServletRequest request = 
-		       ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-		   String base = 
-		      "http://"+request.getServerName() 
-		      + ((request.getServerPort() != 80) ? ":"+request.getServerPort() : "");
-		   return base;
-		}
-```
+- There are multiple ways to implement most pieces of the application.         
 - One way to generate a unique ID for each video is to use an AtomicLong similar to this:
 ```java
-    private static final AtomicLong currentId = new AtomicLong(0L);
+        private static final AtomicLong currentId = new AtomicLong(0L);
 	
 	private Map<Long,Video> videos = new HashMap<Long, Video>();
 
