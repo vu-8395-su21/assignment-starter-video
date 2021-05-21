@@ -4,14 +4,12 @@
 
 To run the application:
 
-Right-click on the Application class in the org.magnum.dataup
+Eclipse -- Right-click on the Application class in the org.magnum.dataup
 package, Run As->Java Application
 
-To stop the application:
+IntelliJ -- Righ-click on the Application class in the org.magnum.dataup
+package, Run Application
 
-Open the Eclipse Debug Perspective (Window->Open Perspective->Debug), right-click on
-the application in the "Debug" view (if it isn't open, Window->Show View->Debug) and
-select Terminate
 
 ## Overview
 
@@ -27,7 +25,8 @@ the core knowledge needed to create much more sophisticated cloud services.
 First, clone this Git repository and import it into Eclipse or IntelliJ as a Gradle Project.
 You can do this from the Eclipse "File" menu by selecting "Import". Expand the "Gradle"
 option and then choose "Existing Gradle Project". Select the root folder of this 
-project and then hit "Finish".
+project and then hit "Finish". In IntelliJ, you can go to File->Open and select the
+root folder of this project.
 
 This assignment tests your ability to create a web application that
 allows clients to upload videos to a server. The server allows clients
@@ -102,14 +101,6 @@ GET /video/{id}/data
  you should look at the AutoGradingTest to ensure that
  you understand all of the requirements. 
  
- There is a VideoSvcApi interface that is annotated with Retrofit annotations in order
- to communicate with the video service that you will be creating. Your solution controller(s)
- should not directly implement this interface in a "Java sense" (e.g., you should not have
- YourSolution implements VideoSvcApi). Your solution should support the HTTP API that
- is described by this interface, in the text above, and in the AutoGradingTest. In some
- cases it may be possible to have the Controller and the client implement the interface,
- but it is not in this 
- 
  Again -- the ultimate ground truth of how the assignment will be graded, is contained
  in AutoGradingTest, which shows the specific tests that will be run to grade your
  solution. You must implement everything that is required to make all of the tests in
@@ -117,8 +108,7 @@ GET /video/{id}/data
  responsible for it and will be graded on whether or not it passes. __Make sure and read
  the AutoGradingTest code and look at each test__!
  
- You should not modify any of the code in Video, VideoStatus,
- or AutoGradingTest. 
+ You should not modify any of the code in Video, VideoStatus, or AutoGradingTest. 
 
 ## Testing Your Implementation
 
