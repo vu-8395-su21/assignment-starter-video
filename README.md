@@ -7,7 +7,7 @@ To run the application:
 Eclipse -- Right-click on the Application class in the org.magnum.dataup
 package, Run As->Java Application
 
-IntelliJ -- Righ-click on the Application class in the org.magnum.dataup
+IntelliJ -- Right-click on the Application class in the org.magnum.dataup
 package, Run Application
 
 
