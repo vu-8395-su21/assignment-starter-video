@@ -46,7 +46,7 @@ public class VideoController {
 	// The path where we expect the video metadata lives
 	public static final String INDIVIDUAL_VIDEO_PATH = VIDEO_SVC_PATH + "/{"+ID_PARAMETER+"}";
 
-	// The path where we expect the VideoSvc to live
+	// The path where we expect individual video data to live
 	public static final String VIDEO_DATA_PATH = INDIVIDUAL_VIDEO_PATH + "/data";
 
 	@Autowired
@@ -75,7 +75,7 @@ public class VideoController {
 		}
 	}
 
-	// This is a skeleton method for handling downloading of binary data. You will
+	// This is a skeleton method for handling uploading of binary data. You will
 	// need to fill in a small amount of the logic. This provides an example of how
 	// to use Spring to marshall/unmarshall content types other than JSON.
 	@PostMapping(VIDEO_DATA_PATH)
