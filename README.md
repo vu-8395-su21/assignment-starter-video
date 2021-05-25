@@ -139,9 +139,9 @@ JSON of a video like this:
 ```java 
 @RequestMapping(value = "/funny/video", method = RequestMethod.POST) 
 public @ResponseBody Video addVideo(@RequestBody Video v){ 
-// Do something with the Video 
-// ... 
-return v; 
+   // Do something with the Video 
+   // ... 
+   return v; 
 } 
 ``` 
 - __org.magnum.dataup.VideoFileManager__: You can optionally use this 
@@ -158,15 +158,15 @@ private VideoFileManager videoDataMgr;
 // You would need some Controller method to call this... 
 public void saveSomeVideo(Video v, MultipartFile videoData) 
 throws IOException { 
-videoDataMgr.saveVideoData(video, videoData.getInputStream()); 
+   videoDataMgr.saveVideoData(video, videoData.getInputStream()); 
 } 
 
 public void serveSomeVideo(Video v, HttpServletResponse response) 
 throws IOException { 
-// Of course, you would need to send some headers, etc. to the 
-// client too! 
-// ... 
-videoDataMgr.copyVideoData(v, response.getOutputStream()); 
+   // Of course, you would need to send some headers, etc. to the 
+   // client too! 
+   // ... 
+   videoDataMgr.copyVideoData(v, response.getOutputStream()); 
 } 
 ``` 
 
@@ -186,13 +186,13 @@ parameters when your Controller's method is invoked:
 ... 
 @RequestMapping("/some/path/{id}") 
 public MyObject doSomething( 
-@PathVariable("id") String id, 
-@RequestParam("something") String data, 
-HttpServletResponse response) { 
-// Maybe you want to set the status code with the response 
-// or write some binary data to an OutputStream obtained 
-// from the HttpServletResponse object. 
-.... 
+   @PathVariable("id") String id, 
+   @RequestParam("something") String data, 
+   HttpServletResponse response) { 
+   // Maybe you want to set the status code with the response 
+   // or write some binary data to an OutputStream obtained 
+   // from the HttpServletResponse object. 
+   .... 
 } 
 
 ``` 
@@ -214,14 +214,14 @@ private static final AtomicLong currentId = new AtomicLong(0L);
 private Map<Long,Video> videos = new HashMap<Long, Video>(); 
 
 public Video save(Video entity) { 
-checkAndSetId(entity); 
-videos.put(entity.getId(), entity); 
-return entity; 
+   checkAndSetId(entity); 
+   videos.put(entity.getId(), entity); 
+   return entity; 
 } 
 
 private void checkAndSetId(Video entity) { 
-if(entity.getId() == 0){ 
-entity.setId(currentId.incrementAndGet()); 
+   if(entity.getId() == 0){ 
+   entity.setId(currentId.incrementAndGet()); 
 } 
 } 
 ``` 
