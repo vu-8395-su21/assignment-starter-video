@@ -39,6 +39,10 @@ JSON. The list of videos need not persist across restarts of the
 server. A client should be able to unmarshal the list of Video 
 objects into a Collection<Video>. 
 - The return content-type should be application/json 
+   
+GET /video/{id}
+- Returns the JSON data for the given video. 
+- The return content-type should be application/json 
 
 POST /video 
 - The video metadata is provided as an application/json request 
