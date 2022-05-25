@@ -25,6 +25,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
 
 import org.magnum.dataup.model.Video;
 
@@ -40,6 +46,9 @@ public class VideoFileManager {
 
 	
 	private Path targetDir_;
+	private Collection<Video> videoCollection = new ArrayList<>();
+
+
 	
 	// The VideoFileManager.get() method should be used
 	// to obtain an instance
@@ -116,5 +125,25 @@ public class VideoFileManager {
 		// LOTS OF RISK HERE
 		Files.copy(videoData, target, StandardCopyOption.REPLACE_EXISTING);
 	}
-	
+
+	public  void addVideoToCollection(Video video)
+	{
+		videoCollection.add(video);
+	}
+
+	public  Collection<Video> getVideoCollection()
+	{
+		return  videoCollection;
+	}
+
+	public  Video getVideo (long id) {
+
+		List<Video> list= videoCollection.stream().filter(video -> video.getId() == id).collect(Collectors.toList());
+		if(list!= null && !list.isEmpty())
+		{return  list.get(0);}
+
+
+		return null;
+
+	}
 }
